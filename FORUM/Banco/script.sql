@@ -13,12 +13,12 @@ create table usuario(
 
 CREATE TABLE categoria(
     id_categoria integer not null PRIMARY KEY auto_increment,
-    nome varchar(100) not null
+    categoria varchar(100) not null
 );
 
 CREATE TABLE sub_categoria(
     id_subc integer not null PRIMARY KEY auto_increment,
-    nome varchar(100) not null
+    sub_categoria varchar(100) not null
 );
 
 CREATE TABLE publicacao(
@@ -36,21 +36,21 @@ CREATE TABLE publicacao(
 
 CREATE TABLE comentario(
     id_com integer not null PRIMARY KEY auto_increment,
-    id_usuario integer not null,
+    id_usuario_comentario integer not null,
     id_pub integer not null,
     comentario varchar(100) not null,
     curtida integer not null,
-    foreign key (id_usuario) references usuario(id_usuario) on delete cascade,
+    foreign key (id_usuario_comentario) references usuario(id_usuario) on delete cascade,
     foreign key (id_pub) references publicacao(id_pub) on delete cascade
 );
 
 CREATE TABLE resposta_comentario(
     id_resp integer not null PRIMARY KEY auto_increment,
-    id_usuario integer not null,
+    id_usuario_resposta_comentario integer not null,
     id_com integer not null,
-    comentario varchar(100) not null,
+    resp_comentario varchar(100) not null,
     curtida integer not null,
-    foreign key (id_usuario) references usuario(id_usuario) on delete cascade,
+    foreign key (id_usuario_resposta_comentario) references usuario(id_usuario) on delete cascade,
     foreign key (id_com) references comentario(id_com) on delete cascade
 );
 
@@ -63,3 +63,12 @@ insert INTO sub_categoria VALUES (default, "Terror");
 insert into publicacao VALUES(default, 1, "20/10/2020", "uma boosta esse filme o chamado da freira", 1, 2, 100);
 insert into comentario VALUES(default, 2, 1, "voce esta totalmente certinho", 23);
 insert into resposta_comentario VALUES(default, 1, 1, "valeu bro", 23);
+
+create view IF NOT EXISTS vw_publicacao as 
+select u.id_usuario, u.username, ca.categoria , cs.sub_categoria, p.data, p.conteudo, p.curtida, co.id_usuario_comentario, co.comentario , res.id_usuario_resposta_comentario, res.resp_comentario
+from publicacao p
+INNER JOIN usuario u on u.id_usuario = p.id_usuario
+INNER JOIN categoria ca on ca.id_categoria = p.id_categoria
+INNER JOIN sub_categoria cs on cs.id_subc = p.id_subc
+INNER JOIN comentario co on co.id_pub = p.id_pub
+INNER JOIN resposta_comentario res on res.id_com = co.id_com;
