@@ -8,7 +8,8 @@ create table usuario(
     username varchar(20) DEFAULT 'Sem Username',
     img mediumblob,
     email varchar(100) not null,
-    senha varchar(100) not null
+    senha varchar(100) not null,
+    role enum("0","1") not null
 );
 
 CREATE TABLE categoria(
@@ -54,8 +55,8 @@ CREATE TABLE resposta_comentario(
     foreign key (id_com) references comentario(id_com) on delete cascade
 );
 
-insert INTO usuario VALUES (default, "breninho", "bb012", default, "brenenene12@gmail.com", "1234");
-insert INTO usuario VALUES (default, "rodolfo", default, default, "rororororo@gmail.com", "1234");
+insert INTO usuario VALUES (default, "breninho", "bb012", default, "brenenene12@gmail.com", "1234", "1");
+insert INTO usuario VALUES (default, "rodolfo", default, default, "rororororo@gmail.com", "1234", "0");
 insert INTO categoria VALUES (default, "Filme");
 insert INTO categoria VALUES (default, "Serie");
 insert INTO sub_categoria VALUES (default, "Comédia");
@@ -65,10 +66,10 @@ insert into comentario VALUES(default, 2, 1, "voce esta totalmente certinho", 23
 insert into resposta_comentario VALUES(default, 1, 1, "valeu bro", 23);
 
 create view IF NOT EXISTS vw_publicacao as 
-select u.id_usuario, u.username, ca.categoria , cs.sub_categoria, p.data, p.conteudo, p.curtida, co.id_usuario_comentario, co.comentario , res.id_usuario_resposta_comentario, res.resp_comentario
+select u.id_usuario, u.username, ca.categoria , cs.sub_categoria, p.id_pub, p.data, p.conteudo, p.curtida, co.id_usuario_comentario, co.comentario , res.id_usuario_resposta_comentario, res.resp_comentario
 from publicacao p
 INNER JOIN usuario u on u.id_usuario = p.id_usuario
 INNER JOIN categoria ca on ca.id_categoria = p.id_categoria
 INNER JOIN sub_categoria cs on cs.id_subc = p.id_subc
-INNER JOIN comentario co on co.id_pub = p.id_pub
-INNER JOIN resposta_comentario res on res.id_com = co.id_com;
+LEFT JOIN comentario co on co.id_pub = p.id_pub
+LEFT JOIN resposta_comentario res on res.id_com = co.id_com;

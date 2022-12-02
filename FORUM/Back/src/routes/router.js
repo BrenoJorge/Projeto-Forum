@@ -26,4 +26,6 @@ router.put("/respcoment/:id",RespComent.updateRespComent);
 router.get("/respcoment",RespComent.readRespComent);
 router.delete("/respcoment/:id",RespComent.deleteRespComent);
 
+router.get("/publicacoes", Publi.readVwPubli)
+
 module.exports = router;

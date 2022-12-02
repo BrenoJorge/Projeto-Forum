@@ -14,9 +14,14 @@ const update = (model, id) => {
     return `UPDATE publicacao SET data = '${model.data}', conteudo = '${model.conteudo}' WHERE id_pub = ${model.id_pub} and id_usuario = ${id}`;
 }
 
+const toReadVw = () => {
+    return ` select * from vw_publicacao;`
+}
+
 module.exports = {
     toCreatePubli,
     toReadAll,
     del,
-    update
+    update,
+    toReadVw
 }

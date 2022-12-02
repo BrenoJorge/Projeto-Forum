@@ -14,7 +14,7 @@ const createPubli = (req, res) => {
 }
 
 const readPubli = (req, res) => {
-    con.query(Item.toReadAll(req.body), (err, result) => {
+    con.query(Item.toReadAll(), (err, result) => {
         if (err == null)
             if (result.length > 0)
                 res.json(result).end();
@@ -50,10 +50,24 @@ const updatePubli = (req, res) => {
     });
 }
 
+const readVwPubli = (req, res) => {
+    con.query(Item.toReadVw(), (err, result) => {
+        if (err == null)
+            if (result.length > 0)
+                res.json(result).end();
+            else
+                res.status(404).end();
+        else
+            res.status(500).end();
+    });
+}
+
+
 
 module.exports = {
     createPubli,
     readPubli,
     deletePubli,
-    updatePubli
+    updatePubli,
+    readVwPubli
 }
