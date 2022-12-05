@@ -4,7 +4,10 @@ const router = express.Router();
 const User = require("../controller/usuarioController");
 const Publi = require("../controller/publiController");
 const Coment = require("../controller/comentController")
-const RespComent = require("../controller/respcomController")
+const RespComent = require("../controller/respcomController");
+const Login = require("../controller/loginController");
+
+router.post('/login/forum', Login.Enter);
 
 router.post("/user",User.createUser);
 router.put("/user/:id",User.updateUser);

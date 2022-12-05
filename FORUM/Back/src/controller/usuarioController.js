@@ -17,7 +17,7 @@ const readUser = (req, res) => {
     con.query(Item.toReadAll(req.body), (err, result) => {
         if (err == null)
             if (result.length > 0)
-                res.json(result).end();
+                res.status(201).json(result).end();
             else
                 res.status(404).end();
         else
