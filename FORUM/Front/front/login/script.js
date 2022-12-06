@@ -3,6 +3,7 @@ const psw = document.querySelector("#password");
 const form = document.querySelector(".card")
 
 function login(event) {
+    event.preventDefault();
     let info = {
         "email": user.value,
         "senha": psw.value

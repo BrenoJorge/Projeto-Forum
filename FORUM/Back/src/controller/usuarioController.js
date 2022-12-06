@@ -4,7 +4,7 @@ const con = require('../DAO/Dao');
 const createUser = (req, res) => {
     con.query(Item.toCreateUsuario(req.body), (err, result) => {
         if (err == null)
-            res.status(201).end();
+            res.status(201).json({"message" : "cadastrado com sucesso"}).end();
         else
             if (err.sqlState == 23000)
                 res.status(406).json(err).end();

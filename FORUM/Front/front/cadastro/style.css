@@ -139,38 +139,14 @@ body {
     padding: 0 5px;
 }
 
-.sign-up-js .content::before {
-    animation: slideout 1.3s; /*MODIFIQUEI DE 3s PARA 1.3s*/
-
-    z-index: 12;
-}
-
-.sign-up-js .second-content .first-column,
-.sign-up-js .second-content .second-column {
-    z-index: -1;
-}
-
-.sign-up-js .first-content .second-column {
-    z-index: 11;
-}
-
-.sign-up-js .first-content .first-column {
-    z-index: 13;    
-}
-
-
-
-.sign-up-js .second-content .second-column {
-    position: relative;
-    z-index: -1;
-    animation: deslocamentoDir 1.3s; /*MODIFIQUEI DE 3s PARA 1.3s*/
-}
-
-/*VERSÃO MOBILE*/
 @media screen and (max-width: 1040px) {
     .content {
         width: 100%;
         height: 100%;
+    }
+    .container{
+        animation:none !important;
+        background-image:none;
     }
 
     .content::before {
@@ -199,128 +175,4 @@ body {
         width: 90%;
     }
     
-    /* ANIMAÇÃO MOBILE CSS*/
-
-    @keyframes deslocamentoEsq {
-
-        from {
-            top: 0;
-            opacity: 1;
-            z-index: 12;
-        }
-    
-        25% {
-            top: -80px;
-            opacity: .5;
-            /* z-index: 12; NÃO HÁ NECESSIDADE */
-        }
-    
-        50% {
-            top: -100px;
-            opacity: .2;
-            /* z-index: 12; NÃO HÁ NECESSIDADE */
-        }
-    
-        to {
-            top: -110px;
-            opacity: 0;
-            z-index: -1;
-        }
-    }
-    
-    
-    @keyframes deslocamentoDir {
-    
-        from {
-            top: 0;
-            z-index: 12;
-        }
-    
-        25% {
-            top: 80px;
-            /* z-index: 12;  NÃO HÁ NECESSIDADE*/
-        }
-    
-        50% {
-            top: 100px;
-            /* z-index: 12; NÃO HÁ NECESSIDADE*/
-            /* background-color: yellow;  Exemplo que dei no vídeo*/
-        }
-    
-        to {
-            top: 110px;
-            z-index: -1;
-        }
-    }
-    
-    
-    
-    @keyframes slidein {
-    
-        from {
-            top: 0;
-            height: 40%;
-        }
-    
-        25% {
-            top: 5%;
-            height: 50%;
-        }
-    
-        50% {
-            top: 25%;
-            height: 60%;
-        }
-    
-        75% {
-            top: 45%;
-            height: 50%;
-        }
-    
-        to {
-            top: 60%;
-            height: 40%;
-        }
-    }
-    
-    @keyframes slideout {
-    
-        from {
-            top: 60%;
-            height: 40%;
-        }
-    
-        25% {
-            top: 45%;
-            height: 50%;
-        }
-    
-        50% {
-            top: 25%;
-            height: 60%;
-        }
-    
-        75% {
-            top: 5%;
-            height: 50%;
-        }
-    
-        to {
-            top: 0;
-            height: 40%;
-        }
-    }
-   
-}
-
-@media screen and (max-width: 740px) {
-    .form {
-        width: 50%;
-    }
-}
-
-@media screen and (max-width: 425px) {
-    .form {
-        width: 100%;
-    }
 }

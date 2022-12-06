@@ -1,5 +1,5 @@
 const toCreateUsuario = (model) => {
-    return `insert INTO usuario VALUES (default, "${model.nome}", "${model.username}", ${model.img}, "${model.email}", "${model.senha}")`;
+    return `insert INTO usuario VALUES (default, "${model.nome}", "${model.username}", ${model.img}, "${model.email}", "${model.senha}", "0")`;
 }
 
 const toReadAll = () => {
@@ -11,7 +11,7 @@ const del = (id) => {
 }
 
 const update = (model, id) => {
-    return `UPDATE usuario SET nome = '${model.nome}', username = '${model.username}', img = ${model.img}, email = "${model.email}", senha = "${model.senha}"  WHERE id_usuario = ${id}`
+    return `UPDATE usuario SET nome = '${model.nome}', username = '${model.username}', img = ${model.img}, email = "${model.email}", senha = "${model.senha}", role = "${model.role}"  WHERE id_usuario = ${id}`
 }
 
 module.exports = {
