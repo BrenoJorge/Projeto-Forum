@@ -15,7 +15,7 @@ body {
 	}
 
 	to {
-		background-position: -1920px;
+		background-position: -4100px;
 	}
 }
 
@@ -24,8 +24,8 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: url(https://static.alphacoders.com/thumbs_categories/20.jpg);
-    animation: movimento 20s linear infinite
+    background-image: url(../assets/1670409892343.jpg);
+    animation: movimento 25s linear infinite
 }
 .content {
     background-color: #fff;
