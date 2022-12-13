@@ -2,8 +2,8 @@ const toCreateComentario = (model) => {
     return `insert into comentario VALUES(default, ${model.id_usuario}, ${model.id_pub}, "${model.comentario}", ${model.curtida});`;
 }
 
-const toReadAll = () => {
-    return `SELECT * FROM comentario`;
+const toReadAll = (id) => {
+    return `SELECT * FROM comentario where id_pub = ${id}`;
 }
 
 const del = (id) => {

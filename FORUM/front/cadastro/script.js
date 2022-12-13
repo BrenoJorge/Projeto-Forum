@@ -14,7 +14,7 @@ function cadastrar(event) {
         "senha": psw.value,
     }
 
-    fetch("http://10.87.207.21:3000/user", {
+    fetch("http://localhost:3000/user", {
             "method": "POST",
             "headers": {
                 "Content-Type": "application/json"

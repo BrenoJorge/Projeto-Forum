@@ -1,10 +1,11 @@
 const Item = require('../model/comentController');
 const con = require('../DAO/Dao');
+const { json } = require('express/lib/response');
 
 const createComent = (req, res) => {
     con.query(Item.toCreateComentario(req.body), (err, result) => {
         if (err == null)
-            res.status(201).end();
+            res.status(201).json(result).end();
         else
             if (err.sqlState == 23000)
                 res.status(406).json(err).end();
@@ -14,7 +15,7 @@ const createComent = (req, res) => {
 }
 
 const readComent = (req, res) => {
-    con.query(Item.toReadAll(req.body), (err, result) => {
+    con.query(Item.toReadAll(req.params.id), (err, result) => {
         if (err == null)
             if (result.length > 0)
                 res.json(result).end();

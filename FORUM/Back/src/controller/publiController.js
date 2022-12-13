@@ -4,7 +4,7 @@ const con = require('../DAO/Dao');
 const createPubli = (req, res) => {
     con.query(Item.toCreatePubli(req.body), (err, result) => {
         if (err == null)
-            res.status(201).end();
+            res.status(201).json(result).end();
         else
             if (err.sqlState == 23000)
                 res.status(406).json(err).end();

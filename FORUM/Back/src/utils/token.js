@@ -5,7 +5,7 @@ const gerarToken = async ( dado ) =>{
     dado = {
         ...dado[0]
     };
-    dado["token"] = await jwt.sign(dado, process.env.KEY, { expiresIn: 30})
+    dado["token"] = await jwt.sign(dado, process.env.KEY, { expiresIn: 600})
     dado = {
         "username" : dado.username,
         "img" : dado.img,

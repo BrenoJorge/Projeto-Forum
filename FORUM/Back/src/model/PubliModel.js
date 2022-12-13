@@ -15,7 +15,7 @@ const update = (model, id) => {
 }
 
 const toReadVw = () => {
-    return ` select * from vw_publicacao;`
+    return ` select * from vw_publicacao order by id_pub desc;`
 }
 
 module.exports = {

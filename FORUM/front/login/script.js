@@ -9,22 +9,36 @@ function login(event) {
         "senha": psw.value
     }
 
-    fetch("http://10.87.207.21:3000/login/forum", {
-            "method": "POST",
-            "headers": {
-                "Content-Type": "application/json"
-            },
-            "body": JSON.stringify(info)
-        })
+    fetch("http://localhost:3000/login/forum", {
+        "method": "POST",
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "body": JSON.stringify(info)
+    })
 
         .then(res => {
             return res.json()
         })
 
         .then(data => {
-            console.log(data)
+            if (data.err === undefined) {
+
+                if (data.token != null) {
+
+                    localStorage.setItem("info", JSON.stringify({ "token": data.token, "username": data.username }));
+
+                    window.location.href = "../Tela inicio/Inicio.html";
+
+                } else {
+
+                    alert("Usuario ou senha incorretos")
+
+                }
+
+            }
         })
 
 }
 
- form.addEventListener("submit", login)
+form.addEventListener("submit", login)

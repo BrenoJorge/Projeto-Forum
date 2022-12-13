@@ -11,7 +11,7 @@
     <title>Document</title>
 </head>
 
-<body>
+<body onload="carregarComentarios()">
     <header>
         <img   onclick="mascaico()"
 
@@ -21,17 +21,21 @@
                 <i class="fas fa-search"></i>
                 <input id="Pesquisa" type="text" placeholder="Pesquisar" required>
             </label>
-        <a href="../login/Login.html"> <button type="submit" class="submit">Login</button></a>
+        <a href="../login/Login.html" id="usuario"> <button type="submit" class="submit">Login</button></a>
     </header>
     <main>
+
         <div class="modal">
             <img class="voltar" onclick="modalx()" src="../assets/pngwing.com.png">
+            <select id="categoria"></select>
+            <select id="subcategoria"></select>
+            <textarea id="conteudo"></textarea>
+            <button onclick="cadastrarComentarios()">Mandar esse cacete</button>
             <p>comentario</p>
         </div>
-        <div class="container">
-        </div>
+
         <div class="content">
-            <div class="topico">
+            <div class="topico model">
                 <div class="topico1">
                     <p class="nome">Felipe</p>
                     <p class="conteudo">Adoro Dorama</p>
@@ -41,18 +45,38 @@
                 <div class="topico2">
                     <div class="cima">
                         <img class="like" src="../assets/coracao.png">
-                        <img class="coment" src="../assets/bate-papo.png">
+                        <button onclick="carregarRespostas(this)"><img class="coment" src="../assets/bate-papo.png"></button>
                         
                     </div>
                     <div class="baixo">
-                        <button>Série</button>
-                        <button>Coreana</button>
+                        <button class="categoria">Série</button>
+                        <button class="subcategoria">Coreana</button>
                     </div>
                 </div>
             </div>  
         </div>
+
         <div class="add">
+
             <button onclick="modal()">+</button>
+        </div>
+        
+        <div id="backgroundComent" class="model">
+            <input type="text" id="comentariozinho">
+            <div id="Coment">
+                <div id="resp">
+                    <p id="user">joaozinho</p>
+                    <p id="resposta">real</p>
+                    <button>responder</button>
+                </div>
+                <div id="subresp">
+                    <p id="usersub">Rodolfo</p>
+                    <p id="respsub">nao sabe o qje fala</p>
+                    <button>responder</button>
+                </div>
+            </div>
+            
+            <button onclick="fecharComentarios()">fechar comentarios</button>
         </div>
     </main>
 
